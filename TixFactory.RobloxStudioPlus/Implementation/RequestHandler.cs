@@ -178,16 +178,21 @@ namespace TixFactory.RobloxStudioPlus
 					case "ModuleScript":
 						if (robloxInstance.Properties.TryGetValue("Source", out var sourceValue) && sourceValue is string source)
 						{
-							if (_InformationRegex.IsMatch(source))
+							var strippedSource = StripSource(source);
+							var file = $"{directory}.lua";
+
+							expectedFiles.Add(file);
+							
+							if (File.Exists(file))
 							{
-								var splitSource = source.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-								source = string.Join(Environment.NewLine, splitSource.Skip(1));
+								var originalContents = StripSource(File.ReadAllText(file));
+								if (originalContents == strippedSource)
+								{
+									break;
+								}
 							}
-
-							source = $"-- CodeSync: {robloxInstance.ClassName} ({DateTime.UtcNow}){Environment.NewLine}" + source;
-
-							File.WriteAllText($"{directory}.lua", source);
-							expectedFiles.Add($"{directory}.lua");
+							
+							File.WriteAllText(file, $"-- CodeSync: {robloxInstance.ClassName} ({DateTime.UtcNow}){Environment.NewLine}{strippedSource}");
 						}
 
 						break;
@@ -227,6 +232,17 @@ namespace TixFactory.RobloxStudioPlus
 			{
 				Directory.Delete(directory, true);
 			}
+		}
+
+		private string StripSource(string source)
+		{
+			if (_InformationRegex.IsMatch(source))
+			{
+				var splitSource = source.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+				source = string.Join(Environment.NewLine, splitSource.Skip(1));
+			}
+
+			return source;
 		}
 
 		private RobloxInstance CreateInstance(string name, string className)
