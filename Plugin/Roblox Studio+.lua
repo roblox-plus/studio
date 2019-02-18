@@ -37,12 +37,9 @@ local featureImport = {
 	require(features.Layers),
 	require(features.MouseFilter),
 	require(features.SelectionUndo),
-	require(features.Weld)
+	require(features.Weld),
+	require(features.CodeSync)
 }
-
-if (isDevelopmentPlugin) then
-	table.insert(featureImport, require(features.CodeSync))
-end
 
 for n, feature in pairs(featureImport) do
 	feature(virtualPlugin, settings)
