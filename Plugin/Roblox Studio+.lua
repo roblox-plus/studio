@@ -33,11 +33,11 @@ local virtualPlugin = require(script.Modules.VirtualPlugin)(plugin, isDevelopmen
 local features = script.Features
 
 local featureImport = {
+	require(features.CodeSync),
 	require(features.Layers),
 	require(features.MouseFilter),
 	require(features.SelectionUndo),
-	require(features.Weld),
-	require(features.CodeSync)
+	require(features.Weld)
 }
 
 for n, feature in pairs(featureImport) do

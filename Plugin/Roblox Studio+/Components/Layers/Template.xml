@@ -1,0 +1,10 @@
+<Frame name="MainFrame">
+	<TextLabel name="Header">
+		<ImageButton name="AddLayer" ra-click="addLayerClick" />
+	</TextLabel>
+	<ScrollingFrame name="Layers">
+		<UIListLayout />
+		<LayerItem ra-repeat="folder,layer in layers.list" layer="layer" />
+	</ScrollingFrame>
+</Frame>
+<!-- WebGL3D -->
