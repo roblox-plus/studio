@@ -1,4 +1,4 @@
--- CodeSync: ModuleScript (2/18/2019 2:03:06 AM)
+-- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
 local rangular = require(script.Parent.Parent.Modules.Rangular)
 local syncService = require(script.SyncService)
 local serializeService = require(script.SerializeService)

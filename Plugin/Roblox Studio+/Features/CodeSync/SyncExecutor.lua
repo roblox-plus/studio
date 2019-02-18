@@ -1,4 +1,4 @@
--- CodeSync: ModuleScript (2/18/2019 2:03:06 AM)
+-- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
 local changeHistoryService = game:GetService("ChangeHistoryService")
 local syncService = require(script.Parent.SyncService)
 
@@ -6,6 +6,8 @@ return (function(storageFolder)
 	local mappingsUpdated = Instance.new("BindableEvent")
 	
 	local function import(parentInstance, importData)
+		local instanceMap = {}
+		
 		for i, instanceData in pairs(importData) do
 			local instance = parentInstance:FindFirstChild(instanceData.name)
 			if (not instance or instance.ClassName ~= instanceData.className) then
@@ -18,6 +20,14 @@ return (function(storageFolder)
 			end
 			
 			import(instance, instanceData.children)
+			instanceMap[instance] = true
+		end
+		
+		for n, instance in pairs(parentInstance:GetChildren()) do
+			if (not instanceMap[instance]
+				and (instance:IsA("LuaSourceContainer") or instance:IsA("Folder"))) then
+				instance:Destroy()
+			end
 		end
 	end
 	

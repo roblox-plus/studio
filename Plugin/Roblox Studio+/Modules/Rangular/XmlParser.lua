@@ -1,4 +1,4 @@
--- CodeSync: ModuleScript (2/18/2019 2:03:06 AM)
+-- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
 -- TODO: Write documentation on the return value
 local slaxml = require(script.SLAXML.slaxdom)
 local httpService = game:GetService("HttpService")
