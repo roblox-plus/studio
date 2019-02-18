@@ -10,18 +10,20 @@ rangular:registerComponent(codeSyncComponent)
 return function(virtualPlugin)
 	local mappingStorage = virtualPlugin.storage:create("CodeSync")
 	local syncExecutor = require(script.SyncExecutor)(mappingStorage)
-	local syncButton = virtualPlugin.toolbar:addButton("Code Sync", "Sync scripts back and forth from file system.", "rbxassetid://2862148797")
 
-	local widgetInfo = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Left, false, false, 256, 256)
-	local widget = virtualPlugin.instance:CreateDockWidgetPluginGui("RobloxStudioPlus_CodeSync", widgetInfo)
-	widget.Title = "Code Sync"
-
-	local codeSync = rangular:bootstrap(widget, codeSyncComponent.Name, {
-		toolbarButton = syncButton,
-		syncService = syncService,
-		serializeService = serializeService,
-		syncExecutor = syncExecutor
-	}, rangular.instance.StyleService.Themes.Studio)
+	local codeSync =
+		rangular:bootstrap(
+		widget,
+		codeSyncComponent.Name,
+		{
+			syncService = syncService,
+			serializeService = serializeService,
+			syncExecutor = syncExecutor,
+			pluginInstance = virtualPlugin.instance,
+			toolbar = virtualPlugin.toolbar
+		},
+		rangular.instance.StyleService.Themes.Studio
+	)
 
 	codeSync.component:compile()
 

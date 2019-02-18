@@ -1,11 +1,13 @@
-<Frame name="MainFrame">
-	<TextLabel name="Header">
-		<TextLabel name="Import" ra-click="import" />
-		<TextLabel name="Export" ra-click="export" />
-	</TextLabel>
-	<ScrollingFrame>
-		<UIListLayout />
-		<CodeSyncFolder ra-repeat="syncInstance,syncFolder in codeSyncMap" instance="syncInstance" folderPath="syncFolder" syncService="syncService" syncExecutor="syncExecutor" serializeService="serializeService" />
-	</ScrollingFrame>
-</Frame>
+<DockWidgetPluginGui id="widgetConfiguration.id" title="widgetConfiguration.title" float="widgetConfiguration.float" size="widgetConfiguration.size" enabled="widgetConfiguration.enabled" plugin="widgetConfiguration.plugin">
+	<Frame name="MainFrame">
+		<TextLabel name="Header">
+			<TextLabel name="Import" ra-click="import" />
+			<TextLabel name="Export" ra-click="export" />
+		</TextLabel>
+		<ScrollingFrame>
+			<UIListLayout />
+			<CodeSyncFolder ra-repeat="syncInstance,syncFolder in codeSyncMap" instance="syncInstance" folderPath="syncFolder" syncService="syncService" syncExecutor="syncExecutor" serializeService="serializeService" />
+		</ScrollingFrame>
+	</Frame>
+</DockWidgetPluginGui>
 <!-- WebGL3D -->

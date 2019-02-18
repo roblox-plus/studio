@@ -3,17 +3,20 @@ local selection = game:GetService("Selection")
 
 return function(parentInstance, args, component)
 	local mappingsUpdated = Instance.new("BindableEvent")
+	local enabled = Instance.new("BoolValue")
+
+	local codeSyncButton = args.toolbar:addButton("Code Sync", "Sync scripts back and forth from file system.", "rbxassetid://2862148797")
+
+	codeSyncButton.mouseButton1Click:connect(
+		function()
+			enabled.Value = not enabled.Value
+		end
+	)
 
 	local folderName = Instance.new("StringValue")
 	folderName.Value = "E:\\Workspace\\Public\\Rangular"
 
 	local codeSyncMap = args.syncExecutor:getMappings()
-
-	args.toolbarButton.mouseButton1Click:connect(
-		function()
-			parentInstance.Enabled = not parentInstance.Enabled
-		end
-	)
 
 	args.syncExecutor.mappingsUpdated:connect(
 		function()
@@ -25,7 +28,14 @@ return function(parentInstance, args, component)
 	return setmetatable(
 		{
 			mappingsUpdated = mappingsUpdated.Event,
-			widget = parentInstance,
+			widgetConfiguration = {
+				id = "RobloxStudioPlus_CodeSync",
+				title = "Code Sync",
+				float = Enum.InitialDockState.Left,
+				size = Vector2.new(256, 256),
+				enabled = enabled,
+				plugin = args.pluginInstance
+			},
 			selection = selection,
 			canImport = function(controller)
 				local selectionList = selection:Get()
