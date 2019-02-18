@@ -14,7 +14,7 @@ local function getWeldableSelection(selection)
 	return weldParts
 end
 
-return function(virtualPlugin, settings)	
+return function(virtualPlugin)	
 	local weldAction = virtualPlugin.actions:create("Weld Selection", "Welds selection to first selected part.", "rbxassetid://161183585")
 	
 	weldAction.triggered:connect(function()

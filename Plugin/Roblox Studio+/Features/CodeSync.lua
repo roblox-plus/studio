@@ -7,7 +7,7 @@ local codeSyncComponent = script.Parent.Parent.Components.CodeSync
 
 rangular:registerComponent(codeSyncComponent)
 
-return function(virtualPlugin, settings)
+return function(virtualPlugin)
 	local mappingStorage = virtualPlugin.storage:create("CodeSync")
 	local syncExecutor = require(script.SyncExecutor)(mappingStorage)
 	local syncButton = virtualPlugin.toolbar:addButton("Code Sync", "Sync scripts back and forth from file system.", "rbxassetid://2862148797")

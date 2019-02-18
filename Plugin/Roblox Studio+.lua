@@ -30,7 +30,6 @@ end
 
 local virtualPlugin = require(script.Modules.VirtualPlugin)(plugin, isDevelopmentPlugin)
 
-local settings = require(script.Modules.Settings)(virtualPlugin)
 local features = script.Features
 
 local featureImport = {
@@ -42,7 +41,7 @@ local featureImport = {
 }
 
 for n, feature in pairs(featureImport) do
-	feature(virtualPlugin, settings)
+	feature(virtualPlugin)
 end
 
 print("Roblox Studio+ loaded")

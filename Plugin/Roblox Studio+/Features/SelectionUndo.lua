@@ -1,7 +1,7 @@
 -- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
 local selectionService = game:GetService("Selection")
 
-return function(virtualPlugin, settings)
+return function(virtualPlugin)
 	local debounce = false
 	local selectionHistory = {}
 	local historyLimit = 1000
