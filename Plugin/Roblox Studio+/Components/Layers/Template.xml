@@ -1,10 +1,12 @@
-<Frame name="MainFrame">
-	<TextLabel name="Header">
-		<ImageButton name="AddLayer" ra-click="addLayerClick" />
-	</TextLabel>
-	<ScrollingFrame name="Layers">
-		<UIListLayout />
-		<LayerItem ra-repeat="folder,layer in layers.list" layer="layer" />
-	</ScrollingFrame>
-</Frame>
+<DockWidgetPluginGui id="widgetConfiguration.id" title="widgetConfiguration.title" float="widgetConfiguration.float" size="widgetConfiguration.size" enabled="widgetConfiguration.enabled" plugin="widgetConfiguration.plugin">
+	<Frame name="MainFrame">
+		<TextLabel name="Header">
+			<ImageButton name="AddLayer" ra-click="addLayerClick" />
+		</TextLabel>
+		<ScrollingFrame name="Layers">
+			<UIListLayout />
+			<LayerItem ra-repeat="folder,layer in layers.list" layer="layer" />
+		</ScrollingFrame>
+	</Frame>
+</DockWidgetPluginGui>
 <!-- WebGL3D -->

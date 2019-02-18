@@ -5,6 +5,15 @@ local dynamicListMetatable = require(script.Parent.Parent.Parent.Modules.Rangula
 
 return function(parentInstance, args, component)
 	local layersStorage = args.storage:create("Layers")
+	local enabled = Instance.new("BoolValue")
+
+	local layersButton = args.toolbar:addButton("Layers", "The ability to hide groups of items from workspace.", "rbxassetid://1847214094")
+
+	layersButton.mouseButton1Click:connect(
+		function()
+			enabled.Value = not enabled.Value
+		end
+	)
 
 	local layers = {
 		count = 0,
@@ -178,6 +187,14 @@ return function(parentInstance, args, component)
 
 	return {
 		layers = layers,
+		widgetConfiguration = {
+			id = "RobloxStudioPlus_Layers",
+			title = "Layers",
+			float = Enum.InitialDockState.Left,
+			size = Vector2.new(256, 256),
+			enabled = enabled,
+			plugin = args.pluginInstance
+		},
 		addLayerClick = function(event)
 			createLayer(selection:Get())
 		end
