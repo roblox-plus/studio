@@ -143,6 +143,11 @@ namespace TixFactory.RobloxStudioPlus
 
 			foreach (var directory in Directory.GetDirectories(location).Where(d => !scannedDirectories.Contains(d)))
 			{
+				if (directory.Contains("\\."))
+				{
+					continue;
+				}
+
 				var folder = CreateInstance(Path.GetFileName(directory), "Folder");
 				folder.Children = Import(directory);
 
