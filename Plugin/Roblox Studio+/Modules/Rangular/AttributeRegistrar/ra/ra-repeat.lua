@@ -1,6 +1,6 @@
 -- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
 local attributeTypes = require(script.Parent.Parent.AttributeTypes)
-local dynamicListMetatable = require(script.Parent.Parent.Parent.DynamicListMetatable)
+local dynamicListMetatable = require(script.Parent.Parent.Parent.Modules.DynamicListMetatable)
 local attributeValueParser = require(script.Parent.Parent.AttributeValueParser)
 
 local restrictedTableKeys = {
