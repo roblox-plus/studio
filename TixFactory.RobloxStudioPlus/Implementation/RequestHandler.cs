@@ -113,7 +113,7 @@ namespace TixFactory.RobloxStudioPlus
 							className = proposedClassName;
 						}
 
-						fileContents = string.Join(Environment.NewLine, fileContents.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Skip(1));
+						fileContents = StripSource(fileContents);
 					}
 
 					var instanceName = Path.GetFileNameWithoutExtension(file);
@@ -238,8 +238,8 @@ namespace TixFactory.RobloxStudioPlus
 		{
 			if (_InformationRegex.IsMatch(source))
 			{
-				var splitSource = source.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-				source = string.Join(Environment.NewLine, splitSource.Skip(1));
+				var splitSource = source.Split('\n');
+				source = string.Join("\n", splitSource.Skip(1));
 			}
 
 			return source;
