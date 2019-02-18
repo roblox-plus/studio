@@ -1,0 +1,7 @@
+<Frame>
+	<Checkbox checked="visible" />
+	<ImageButton name="DeleteLayer" ra-click="delete" />
+	<ImageButton name="SelectLayerItems" ra-click="select" />
+	<TextBox ra-event="FocusLost,blur" />
+</Frame>
+<!-- WebGL3D -->
