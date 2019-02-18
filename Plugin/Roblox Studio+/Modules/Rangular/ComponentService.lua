@@ -6,7 +6,7 @@ local instanceFactory = require(script.InstanceFactory)
 local instanceListFactory = require(script.Parent.InstanceListFactory)
 local attributeRegistrar = require(script.Parent.AttributeRegistrar)
 local attributeValueParser = require(script.Parent.AttributeRegistrar.AttributeValueParser)
-local timer = require(script.Parent.StyleService.CascadePropertyApplier.Timer)
+local timer = require(script.Parent.Modules.Timer)
 local timerPrecision = 0.001
 
 	

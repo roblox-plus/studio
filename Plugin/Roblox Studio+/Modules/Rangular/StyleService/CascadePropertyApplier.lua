@@ -2,7 +2,7 @@
 local assertType = require(script.AssertType)
 local propertySheetLoader = require(script.PropertySheetLoader)
 local propertySheetCascader = require(script.PropertySheetCascader)
-local timer = require(script.Timer)
+local timer = require(script.Parent.Parent.Modules.Timer)
 
 return {
 	propertySheetLoader = propertySheetLoader,
