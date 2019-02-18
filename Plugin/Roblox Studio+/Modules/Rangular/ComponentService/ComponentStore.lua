@@ -1,6 +1,6 @@
 -- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
 local textResourceProvider = require(script.Parent.Parent.TextResourceProvider)
-local xmlParser = require(script.Parent.Parent.XmlParser)
+local xmlParser = require(script.Parent.Parent.Modules.XmlParser)
 local attributeRegistrar = require(script.Parent.Parent.AttributeRegistrar)
 
 function loadExternalComponentResource(instance)
