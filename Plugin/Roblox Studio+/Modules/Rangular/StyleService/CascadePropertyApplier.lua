@@ -1,5 +1,5 @@
 -- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
-local assertType = require(script.AssertType)
+local assertType = require(script.Parent.Parent.Modules.AssertType)
 local propertySheetLoader = require(script.PropertySheetLoader)
 local propertySheetCascader = require(script.PropertySheetCascader)
 local timer = require(script.Parent.Parent.Modules.Timer)

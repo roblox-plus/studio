@@ -1,5 +1,5 @@
 -- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
-local assertType = require(script.Parent.AssertType)
+local assertType = require(script.Parent.Parent.Parent.Modules.AssertType)
 local comparers = require(script.Comparers)
 local selectorParseCache = {}
 local rawSelectorParseCache = {}

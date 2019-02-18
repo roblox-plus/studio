@@ -1,5 +1,5 @@
 -- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
-local assertType = require(script.Parent.StyleService.CascadePropertyApplier.AssertType)
+local assertType = require(script.Parent.Modules.AssertType)
 local register = {}
 
 local attributeRegistrar = {

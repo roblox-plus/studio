@@ -1,7 +1,7 @@
 -- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
 local classStyles = script.ClassStyles
 local cascadePropertyApplier = require(script.CascadePropertyApplier)
-local assertType = require(script.CascadePropertyApplier.AssertType)
+local assertType = require(script.Parent.Modules.AssertType)
 
 -- Indexes should not be tampered with without insert code order being rearranged below.
 local classStyleArgs, classStyleIndex = {}, 1
