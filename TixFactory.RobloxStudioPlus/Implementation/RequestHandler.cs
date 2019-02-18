@@ -129,13 +129,13 @@ namespace TixFactory.RobloxStudioPlus
 						scannedDirectories.Add(directory);
 					}
 				}
-				else if (file.EndsWith(".xml"))
+				else if (file.EndsWith(".xml") || file.EndsWith(".md"))
 				{
 					var fileContents = File.ReadAllText(file);
 					var instanceName = Path.GetFileNameWithoutExtension(file);
 					var script = CreateInstance(instanceName, "ModuleScript");
 
-					script.Properties.Add("Source", $"return [==[\n{fileContents.Trim()}\n]==]\n");
+					script.Properties.Add("Source", $"return [===[\n{fileContents.Trim()}\n]===]\n");
 
 					items.Add(script);
 				}
