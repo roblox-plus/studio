@@ -1,7 +1,4 @@
--- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
--- WebGL3D imported SLAXML from https://github.com/Phrogz/SLAXML
-
-return [==[# SLAXML
+# SLAXML
 SLAXML is a pure-Lua SAX-like streaming XML parser. It is more robust than
 many (simpler) pattern-based parsers that exist ([such as mine][1]), properly
 supporting code like `<expr test="5 > 7" />`, CDATA nodes, comments, namespaces,
@@ -336,4 +333,4 @@ So, if you want to use a `foo` prefix on an element or attribute, be sure to add
 ## License
 Copyright © 2013 [Gavin Kistner](mailto:!@phrogz.net)
 
-Licensed under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE.txt for more details.]==]
+Licensed under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE.txt for more details.

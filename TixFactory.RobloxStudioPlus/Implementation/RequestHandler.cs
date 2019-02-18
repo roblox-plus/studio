@@ -135,7 +135,7 @@ namespace TixFactory.RobloxStudioPlus
 					var instanceName = Path.GetFileNameWithoutExtension(file);
 					var script = CreateInstance(instanceName, "ModuleScript");
 
-					script.Properties.Add("Source", $"return [===[\n{fileContents.Trim()}\n]===]\n");
+					script.Properties.Add("Source", $"return [===[{fileContents.Trim()}]===]\n");
 
 					items.Add(script);
 				}
