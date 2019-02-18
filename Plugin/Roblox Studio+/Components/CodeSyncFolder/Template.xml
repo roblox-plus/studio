@@ -1,5 +1,4 @@
-<Frame name="SyncFolder"
-        ra-click="selectInstance">
+<Frame name="SyncFolder" ra-click="selectInstance">
 	<TextLabel name="ConfigureSyncFolder" ra-click="configureFolder" />
 	<TextLabel name="OpenSyncFolder" ra-click="openFolder" />
 	<TextLabel name="Sync" ra-click="sync" />
