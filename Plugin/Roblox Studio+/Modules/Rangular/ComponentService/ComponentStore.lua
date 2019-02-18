@@ -1,5 +1,4 @@
 -- CodeSync: ModuleScript (2/18/2019 3:40:28 AM)
-local textResourceProvider = require(script.Parent.Parent.TextResourceProvider)
 local xmlParser = require(script.Parent.Parent.Modules.XmlParser)
 local attributeRegistrar = require(script.Parent.Parent.AttributeRegistrar)
 
@@ -43,7 +42,6 @@ return {
 			local template = component:FindFirstChild("Template")
 			local style = component:FindFirstChild("Style")
 			local controller = component:FindFirstChild("Controller")
-			local textResources = component:FindFirstChild("TextResources")
 			local dependencies = component:FindFirstChild("Dependencies")
 			
 			if (template) then
@@ -56,12 +54,6 @@ return {
 			
 			if (controller) then
 				componentInformation.controller = loadExternalComponentResource(controller)
-			end
-			
-			if (textResources) then
-				componentInformation.textResources = loadExternalComponentResource(textResources)(textResourceProvider)
-			else
-				componentInformation.textResources = textResourceProvider:createEnglishResources({})
 			end
 			
 			if (dependencies) then

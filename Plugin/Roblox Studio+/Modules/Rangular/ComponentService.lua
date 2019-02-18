@@ -75,7 +75,6 @@ return {
 			parent = parent,
 			style = componentInformation.style,
 			instanceList = instanceListFactory:creatInstanceList(parent.instance),
-			textResources = componentInformation.textResources,
 			
 			children = {},
 			
