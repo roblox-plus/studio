@@ -7,23 +7,19 @@ return function(parentInstance, args, component)
 
 	local codeSyncButton = args.toolbar:addButton("Code Sync", "Sync scripts back and forth from file system.", "rbxassetid://2862148797")
 
-	codeSyncButton.mouseButton1Click:connect(
-		function()
-			enabled.Value = not enabled.Value
-		end
-	)
+	codeSyncButton.mouseButton1Click:connect(function()
+		enabled.Value = not enabled.Value
+	end)
 
 	local folderName = Instance.new("StringValue")
 	folderName.Value = "E:\\Workspace\\Public\\Rangular"
 
 	local codeSyncMap = args.syncExecutor:getMappings()
 
-	args.syncExecutor.mappingsUpdated:connect(
-		function()
-			codeSyncMap = args.syncExecutor:getMappings()
-			mappingsUpdated:Fire()
-		end
-	)
+	args.syncExecutor.mappingsUpdated:connect(function()
+		codeSyncMap = args.syncExecutor:getMappings()
+		mappingsUpdated:Fire()
+	end)
 
 	return setmetatable(
 		{

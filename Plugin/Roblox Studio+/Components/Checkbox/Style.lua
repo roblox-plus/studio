@@ -12,7 +12,7 @@ return function(controller)
 			local events = {}
 
 			table.insert(events, controller.checked.Changed:connect(clearCache))
-			
+
 			return events
 		end
 	}

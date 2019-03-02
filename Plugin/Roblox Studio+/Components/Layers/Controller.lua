@@ -9,11 +9,9 @@ return function(parentInstance, args, component)
 
 	local layersButton = args.toolbar:addButton("Layers", "The ability to hide groups of items from workspace.", "rbxassetid://1847214094")
 
-	layersButton.mouseButton1Click:connect(
-		function()
-			enabled.Value = not enabled.Value
-		end
-	)
+	layersButton.mouseButton1Click:connect(function()
+		enabled.Value = not enabled.Value
+	end)
 
 	local layers = {
 		count = 0,
@@ -95,38 +93,34 @@ return function(parentInstance, args, component)
 		local events = {}
 		local visibility = Instance.new("BoolValue")
 
-		local layer =
-			setmetatable(
-			{
-				folder = layerFolder,
-				visibilityChanged = visibility.Changed,
-				instances = {},
-				disconnect = function(layer)
-					layer.visible = true
+		local layer = setmetatable({
+			folder = layerFolder,
+			visibilityChanged = visibility.Changed,
+			instances = {},
+			disconnect = function(layer)
+				layer.visible = true
 
-					for n, event in pairs(events) do
-						event:disconnect()
-					end
-				end,
-				destroy = function(layer)
-					layers:remove(layer)
+				for n, event in pairs(events) do
+					event:disconnect()
 				end
-			},
-			{
-				__index = function(layer, index)
-					if (index == "visible") then
-						return #layerFolder:GetChildren() == 0
-					end
+			end,
+			destroy = function(layer)
+				layers:remove(layer)
+			end
+		}, {
+			__index = function(layer, index)
+				if (index == "visible") then
+					return #layerFolder:GetChildren() == 0
+				end
 
-					return rawget(layer, index)
-				end,
-				__newindex = function(layer, index, value)
-					if (index == "visible") then
-						setItemVisibilityState(layer.instances, not (not value), layerFolder)
-					end
+				return rawget(layer, index)
+			end,
+			__newindex = function(layer, index, value)
+				if (index == "visible") then
+					setItemVisibilityState(layer.instances, not (not value), layerFolder)
 				end
-			}
-		)
+			end
+		})
 
 		for n, instance in pairs(layerFolder:GetChildren()) do
 			for i, child in pairs(instance:GetChildren()) do

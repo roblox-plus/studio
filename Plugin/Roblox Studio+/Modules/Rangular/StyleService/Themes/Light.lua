@@ -4,7 +4,7 @@ return {
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		BorderColor3 = Color3.fromRGB(27, 42, 53)
 	},
-	
+
 	["TextLabel,TextButton,TextBox"] = {
 		TextColor3 = Color3.fromRGB(0, 0, 0)
 	}

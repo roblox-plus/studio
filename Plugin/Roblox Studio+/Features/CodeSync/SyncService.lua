@@ -8,11 +8,11 @@ local function sendRequest(path, requestBody)
 		Method = "POST",
 		Body = httpService:JSONEncode(requestBody)
 	})
-	
+
 	local success, responseBody = pcall(function()
 		return httpService:JSONDecode(response.Body)
 	end)
-	
+
 	if (success) then
 		if (responseBody.error) then
 			error(responseBody.error)
@@ -20,28 +20,32 @@ local function sendRequest(path, requestBody)
 			error("Failed to connecto sync server. (" .. response.StatusCode .. ": " .. response.StatusMessage .. ")")
 		end
 	end
-	
+
 	return responseBody
 end
 
 return {
 	import = function(syncService, location)
-		return sendRequest("import", { location = location })
+		return sendRequest("import", {
+			location = location
+		})
 	end,
-	
+
 	export = function(syncService, exportTable, location)
 		local exportResult = sendRequest("export", {
 			location = location,
 			exportData = exportTable
 		})
-		
+
 		return exportResult.success
 	end,
-	
+
 	openFileExplorer = function(syncService, location)
-		sendRequest("openFileExplorer", { location = location })
+		sendRequest("openFileExplorer", {
+			location = location
+		})
 	end,
-	
+
 	selectFolderPath = function(syncService)
 		local result = sendRequest("selectFolderPath", {})
 		return result.location

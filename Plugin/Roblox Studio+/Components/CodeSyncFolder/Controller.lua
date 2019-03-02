@@ -23,7 +23,9 @@ return function(parentInstance, args, component)
 	return {
 		isSelected = isSelected,
 		selectInstance = function(event)
-			selection:Set({args.instance})
+			selection:Set({
+				args.instance
+			})
 		end,
 		configureFolder = function(event)
 			local newLocation = args.syncService:selectFolderPath()

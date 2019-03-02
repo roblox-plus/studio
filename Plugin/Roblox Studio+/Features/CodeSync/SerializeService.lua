@@ -5,8 +5,8 @@ return {
 			scripts = {},
 			children = {}
 		}
-		
-		for n,o in pairs(instance:GetChildren()) do
+
+		for n, o in pairs(instance:GetChildren()) do
 			if (o:IsA("Script")) then
 				table.insert(topLevel.scripts, {
 					className = o.ClassName,
@@ -17,7 +17,7 @@ return {
 				table.insert(topLevel.children, serialized)
 			end
 		end
-		
+
 		return topLevel
 	end
 }

@@ -6,12 +6,12 @@ end
 return {
 	start = function()
 		local startTime = tick()
-		
+
 		return {
 			clock = function(timer, precision)
 				local stopTime = tick()
 				local passed = (stopTime - startTime) * 1000
-				
+
 				if (precision) then
 					return roundTo(passed, precision)
 				else

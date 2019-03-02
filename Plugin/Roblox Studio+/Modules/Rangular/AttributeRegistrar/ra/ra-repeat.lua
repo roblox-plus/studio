@@ -8,14 +8,13 @@ local restrictedTableKeys = {
 	valueRemoved = true
 }
 
-
 function createFromCount(childTag, context, count, create, destroy, var1)
 	for n = 1, count do
 		create(n, {
 			[var1] = n
 		})
 	end
-	
+
 	for n = #context.component:getChildren(childTag), count + 1, -1 do
 		destroy(n)
 	end
@@ -27,7 +26,7 @@ function createFromTable(childTag, context, tab, create, destroy, var1, var2)
 			destroy(n, true)
 		end
 	end
-	
+
 	for i, v in pairs(tab) do
 		if (not restrictedTableKeys[i]) then
 			create(i, {
@@ -37,31 +36,30 @@ function createFromTable(childTag, context, tab, create, destroy, var1, var2)
 		end
 	end
 end
-	
 
 return {
 	["type"] = attributeTypes.compile,
-	
+
 	trigger = function(attribute, childTag, attributeValue, create, destroy, context)
 		local args, rawValue = attributeValue:match("(.+)%s+in%s+(.+)")
 		local var1, var2 = args:match("([^,%s]+)%s*,?%s*(.*)")
 		local value = attributeValueParser:parseAttributeValue(context.component.controller, rawValue)
-		
+
 		local recompileEvent = Instance.new("BindableEvent")
 		local events = {}
 		local compile = nil
-		
+
 		if (var2 == "") then
 			if (typeof(value) == "number") then
 				compile = function()
 					createFromCount(childTag, context, value, create, destroy, var1)
 				end
-				
+
 			elseif (typeof(value) == "Instance" and value:IsA("IntValue")) then
 				compile = function()
 					createFromCount(childTag, context, value.Value, create, destroy, var1)
 				end
-				
+
 				table.insert(events, value.Changed:connect(compile))
 			else
 				error("'ra-repeat' number (or IntValue) expected (got " .. typeof(value) .. ", raw: " .. rawValue .. ")")
@@ -71,7 +69,7 @@ return {
 				compile = function()
 					createFromTable(childTag, context, value, create, destroy, var1, var2)
 				end
-				
+
 				local valueMetatable = getmetatable(value)
 				if (valueMetatable == dynamicListMetatable) then
 					table.insert(events, value.valueAdded.Event:connect(compile))
@@ -79,12 +77,12 @@ return {
 				end
 			end
 		end
-		
+
 		return {
 			events = events,
 			recompileEvent = recompileEvent.Event,
 			creationOverride = true,
-			
+
 			compile = compile
 		}
 	end

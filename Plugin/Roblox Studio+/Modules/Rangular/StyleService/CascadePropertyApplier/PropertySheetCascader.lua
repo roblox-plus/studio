@@ -7,9 +7,9 @@ return {
 		assertType("instance", instance, "Instance")
 		assertType("propertySheets", propertySheets, "table")
 		assertType("parentMutable", parentMutable, "boolean")
-		
+
 		local properties = {}
-		
+
 		for n, propertySheet in pairs(propertySheets) do
 			for i, propertySheetValue in pairs(propertySheet:getSheet()) do
 				for selectorIndex, selector in pairs(propertySheetValue.selectors) do
@@ -17,13 +17,13 @@ return {
 						for propertyName, propertyValue in pairs(propertySheetValue.properties) do
 							properties[propertyName] = propertyValue
 						end
-						
+
 						break
 					end
 				end
 			end
 		end
-		
+
 		return properties
 	end
 }

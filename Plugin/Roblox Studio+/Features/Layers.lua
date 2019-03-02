@@ -7,17 +7,11 @@ local layersComponent = script.Parent.Parent.Components.Layers
 rangular:registerComponent(layersComponent)
 
 return function(virtualPlugin)
-	local layers =
-		rangular:bootstrap(
-		nil,
-		layersComponent.Name,
-		{
-			storage = virtualPlugin.storage,
-			pluginInstance = virtualPlugin.instance,
-			toolbar = virtualPlugin.toolbar
-		},
-		rangular.instance.StyleService.Themes.Studio
-	)
+	local layers = rangular:bootstrap(nil, layersComponent.Name, {
+		storage = virtualPlugin.storage,
+		pluginInstance = virtualPlugin.instance,
+		toolbar = virtualPlugin.toolbar
+	}, rangular.instance.StyleService.Themes.Studio)
 
 	layers.component:compile()
 

@@ -4,35 +4,35 @@ local register = {}
 
 local attributeRegistrar = {
 	types = require(script.AttributeTypes),
-	
+
 	getAttribute = function(attributeRegistrar, attributeName)
 		return register[attributeName]
 	end,
-	
+
 	registerAttribute = function(attributeRegistrar, attributeModuleScript, ignoreIfDuplicate)
 		assert(typeof(attributeModuleScript) == "Instance", "Expected attributeModuleScript to be ModuleScript (got " .. typeof(attributeModuleScript) .. ")")
 		assert(attributeModuleScript:IsA("ModuleScript"), "Expected attributeModuleScript to be ModuleScript (got " .. typeof(attributeModuleScript.ClassName) .. ")")
-		
+
 		if (register[attributeModuleScript.Name]) then
 			if (ignoreIfDuplicate) then
 				return
 			end
-			
+
 			error("Duplicate registration of attribute: " .. tostring(attributeModuleScript))
 		end
-		
+
 		local attribute = require(attributeModuleScript)
 		assertType("attribute", attribute, "table")
-		
+
 		attribute.name = attributeModuleScript.Name
 		attribute.priority = attribute.priority or 0
-		
+
 		register[attributeModuleScript.Name] = attribute
 	end,
-	
+
 	registerAttributes = function(attributeRegistrar, attributeModuleScripts, ignoreDuplicates)
 		assertType("attributeModuleScripts", attributeModuleScripts, "table", "Instance")
-		
+
 		if (typeof(attributeModuleScripts) == "Instance") then
 			attributeRegistrar:registerAttributes(attributeModuleScripts:GetChildren(), ignoreDuplicates)
 		else
@@ -43,10 +43,8 @@ local attributeRegistrar = {
 	end
 }
 
-
 attributeRegistrar:registerAttributes(script.ra)
 attributeRegistrar:registerAttributes(script.custom)
-
 
 return attributeRegistrar
 

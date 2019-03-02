@@ -13,7 +13,7 @@ return function(controller)
 		["ImageButton.DeleteLayer"] = {
 			Image = "rbxasset://textures/ui/Keyboard/close_button_icon.png",
 			Size = UDim2.new(0, 24, 0, 24),
-			Position = UDim2.new(0, 24, 0 ,0)
+			Position = UDim2.new(0, 24, 0, 0)
 		},
 
 		["ImageButton.SelectLayerItems"] = {
@@ -34,7 +34,7 @@ return function(controller)
 			local events = {}
 
 			table.insert(events, controller.folder:GetPropertyChangedSignal("Name"):connect(clearCache))
-			
+
 			return events
 		end
 	}

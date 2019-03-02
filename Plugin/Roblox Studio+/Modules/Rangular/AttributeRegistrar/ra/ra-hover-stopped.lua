@@ -5,11 +5,9 @@ local eventContextProvider = require(script.Parent.Parent.EventContextProvider)
 
 return {
 	["type"] = attributeTypes.instance,
+	
 	trigger = function(attribute, instance, activeComponent, value, instanceComponent)
-		assert(
-			instance:IsA("GuiObject") or instance:IsA("ClickDetector"),
-			"Expected ra-hover-stopped to be used with GuiObject or ClickDetector (got " .. instance.ClassName .. ")"
-		)
+		assert(instance:IsA("GuiObject") or instance:IsA("ClickDetector"), "Expected ra-hover-stopped to be used with GuiObject or ClickDetector (got " .. instance.ClassName .. ")")
 
 		value = attributeValueParser:parseAttributeValue(activeComponent.controller, value)
 		assert(typeof(value) == "function", "Expected ra-hover-stopped value to be function (got " .. typeof(value) .. ")")

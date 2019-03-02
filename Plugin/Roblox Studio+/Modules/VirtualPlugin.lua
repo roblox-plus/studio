@@ -5,11 +5,11 @@ return function(pluginInstance, isDevelopmentPlugin)
 		toolbar = require(script.Toolbar)(pluginInstance, isDevelopmentPlugin),
 		mouse = pluginInstance:GetMouse()
 	}
-	
+
 	virtualPlugin.storage = require(script.Parent.InstanceStorage)("RobloxPlusStudioStorage_" .. pluginInstance:GetStudioUserId())
 	virtualPlugin.actions = require(script.PluginAction)(virtualPlugin)
 	virtualPlugin.gui = require(script.PluginGui)(virtualPlugin)
-	
+
 	return virtualPlugin
 end
 

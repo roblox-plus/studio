@@ -6,14 +6,14 @@ local attributeValueParser = require(script.Parent.Parent.AttributeValueParser)
 return {
 	["type"] = attributeTypes.compile,
 	["priority"] = math.huge,
-	
+
 	trigger = function(attribute, childTag, attributeValue, create, destroy, context)
 		local value = attributeValueParser:parseAttributeValue(context.component.controller, attributeValue)
 		assertType("value", value, "BoolValue")
-		
+
 		return {
 			recompileEvent = value.Changed,
-			
+
 			compile = function()
 				if (not value.Value) then
 					for i, child in pairs(context.component:getChildren(childTag)) do
@@ -21,7 +21,7 @@ return {
 					end
 				end
 			end,
-			
+
 			["break"] = function()
 				return not value.Value
 			end

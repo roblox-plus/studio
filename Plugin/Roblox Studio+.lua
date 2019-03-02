@@ -8,12 +8,12 @@ local function getScript()
 	end
 
 	local insertService = game:GetService("InsertService")
-	--local latestPluginVersion = insertService:GetLatestAssetVersionAsync(144358935)
+	-- local latestPluginVersion = insertService:GetLatestAssetVersionAsync(144358935)
 
-	--print("Loading resources externally..\n\tVersion:", latestPluginVersion)
+	-- print("Loading resources externally..\n\tVersion:", latestPluginVersion)
 	print("Loading resources externally..")
 
-	local publishedPlugin = insertService:LoadAsset(144358935):GetChildren()[1] --insertService:LoadAssetVersion(latestPluginVersion):GetChildren()[1]
+	local publishedPlugin = insertService:LoadAsset(144358935):GetChildren()[1] -- insertService:LoadAssetVersion(latestPluginVersion):GetChildren()[1]
 	if (publishedPlugin and publishedPlugin:IsA("Script")) then
 		return publishedPlugin
 	else
@@ -24,7 +24,7 @@ end
 -- For local development...
 local isDevelopmentPlugin = getfenv()["script"] == nil
 if (isDevelopmentPlugin) then
-	--print("Loading local development resources...")
+	-- print("Loading local development resources...")
 	getfenv()["script"] = getScript()
 end
 

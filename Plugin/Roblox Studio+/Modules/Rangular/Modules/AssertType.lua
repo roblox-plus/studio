@@ -5,15 +5,15 @@ function isExpectedType(actualType, expectedTypes)
 			return true
 		end
 	end
-	
+
 	return false
 end
 
 return function(name, object, ...)
 	local actualType = typeof(object)
-	local expectedTypes = { ... }
+	local expectedTypes = {...}
 	local expectedType = expectedTypes[1]
-	
+
 	-- TODO: Make assert message better (include more than one expected type)
 	return assert(isExpectedType(actualType, expectedTypes), "Expected '" .. name .. "' to be '" .. expectedType .. "' (got " .. actualType .. ")")
 end

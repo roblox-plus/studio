@@ -11,19 +11,13 @@ return function(virtualPlugin)
 	local mappingStorage = virtualPlugin.storage:create("CodeSync")
 	local syncExecutor = require(script.SyncExecutor)(mappingStorage)
 
-	local codeSync =
-		rangular:bootstrap(
-		widget,
-		codeSyncComponent.Name,
-		{
-			syncService = syncService,
-			serializeService = serializeService,
-			syncExecutor = syncExecutor,
-			pluginInstance = virtualPlugin.instance,
-			toolbar = virtualPlugin.toolbar
-		},
-		rangular.instance.StyleService.Themes.Studio
-	)
+	local codeSync = rangular:bootstrap(nil, codeSyncComponent.Name, {
+		syncService = syncService,
+		serializeService = serializeService,
+		syncExecutor = syncExecutor,
+		pluginInstance = virtualPlugin.instance,
+		toolbar = virtualPlugin.toolbar
+	}, rangular.instance.StyleService.Themes.Studio)
 
 	codeSync.component:compile()
 

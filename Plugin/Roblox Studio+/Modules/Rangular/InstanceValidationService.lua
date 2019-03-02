@@ -6,11 +6,11 @@ return {
 		if (classNameCache[className] ~= nil) then
 			return classNameCache[className]
 		end
-		
+
 		classNameCache[className] = pcall(function()
 			return Instance.new(className)
 		end)
-		
+
 		return classNameCache[className]
 	end
 }
