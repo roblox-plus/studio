@@ -240,12 +240,20 @@ namespace TixFactory.RobloxStudioPlus
 			// Cleanup on export.
 			foreach (var file in Directory.GetFiles(request.Location).Where(f => !expectedFiles.Contains(f)))
 			{
-				File.Delete(file);
+				var fileName = Path.GetFileName(file);
+				if (!string.IsNullOrWhiteSpace(fileName) && !fileName.StartsWith("."))
+				{
+					File.Delete(file);
+				}
 			}
 
 			foreach (var directory in Directory.GetDirectories(request.Location).Where(d => !expectedDirectories.Contains(d)))
 			{
-				Directory.Delete(directory, true);
+				var directoryName = Path.GetFileName(directory);
+				if (!string.IsNullOrWhiteSpace(directoryName) && !directoryName.StartsWith("."))
+				{
+					Directory.Delete(directory, recursive: false);
+				}
 			}
 		}
 
